@@ -3,35 +3,7 @@ package com.app.controller;
 
 
 import com.app.model.*;
-import com.app.model.ClassOfAcademy;
-import com.app.service.addressService.AddressService;
-import com.app.service.addressService.IAddressService;
-import com.app.service.adminService.AdminService;
-import com.app.service.adminService.IAdminService;
 import com.app.service.classService.ClassService;
-import com.app.service.classService.IClassService;
-import com.app.service.courseService.CourseService;
-import com.app.service.courseService.ICourseService;
-import com.app.service.statusService.IStatusService;
-import com.app.service.statusService.StatusService;
-import com.app.service.studentService.IStudentService;
-import com.app.service.studentService.StudentService;
-import com.app.service.supervisorService.ISupervisorService;
-import com.app.service.supervisorService.SupervisorService;
-import com.app.service.teacherService.ITeacherService;
-import com.app.service.teacherService.TeacherService;
-//import com.app.service.addressService.AddressService;
-//import com.app.service.addressService.IAddressService;
-//import com.app.service.adminService.AdminService;
-//import com.app.service.adminService.IAdminService;
-//import com.app.service.classService.ClassService;
-//import com.app.service.classService.IClassService;
-//import com.app.service.courseService.CourseService;
-//import com.app.service.courseService.ICourseService;
-//import com.app.service.statusService.IStatusService;
-//import com.app.service.statusService.StatusService;
-//import com.app.service.supervisorService.ISupervisorService;
-//import com.app.service.supervisorService.SupervisorService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
