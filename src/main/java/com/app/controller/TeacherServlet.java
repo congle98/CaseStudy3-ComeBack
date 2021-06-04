@@ -31,12 +31,23 @@ public class TeacherServlet extends HttpServlet {
            action = "";
        }
        switch (action){
+
+           case "logOut":
+               LoginPage(req,resp);
            default:
                teacherHomePage(req,resp);
                break;
        }
 
 
+    }
+
+    private void LoginPage(HttpServletRequest req, HttpServletResponse resp) {
+        try {
+            resp.sendRedirect("/index.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void teacherHomePage(HttpServletRequest req, HttpServletResponse resp) {
