@@ -70,7 +70,7 @@ public class BlogService implements IBlogService {
             PreparedStatement statement = connection.prepareStatement(CREATE_BLOG);
             statement.setString(1,p.getDescription());
             statement.setDate(2, Date.valueOf(p.getDate()));
-            statement.setInt(3,p.getaClass().getId());
+            statement.setInt(3,p.getClassOfAcademy().getId());
             statement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -95,7 +95,7 @@ public class BlogService implements IBlogService {
             PreparedStatement statement = connection.prepareStatement(UPDATE_BLOG_BY_ID);
             statement.setString(1,blog.getDescription());
             statement.setDate(2, Date.valueOf(blog.getDate()));
-            statement.setInt(3,blog.getaClass().getId());
+            statement.setInt(3,blog.getClassOfAcademy().getId());
             statement.setInt(4,id);
             statement.executeUpdate();
         } catch (SQLException throwables) {

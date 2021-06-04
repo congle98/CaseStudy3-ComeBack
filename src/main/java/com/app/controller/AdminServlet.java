@@ -102,6 +102,9 @@ public class AdminServlet extends HttpServlet {
             case"deleteStudent":
                 deleteStudent(req,resp);
                 break;
+            case "logOut":
+                adminLoginPage(req,resp);
+                break;
             default:
                 adminLoginPage(req,resp);
                 break;
@@ -160,6 +163,7 @@ public class AdminServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+
     private void adminHomePage(HttpServletRequest req, HttpServletResponse resp) {
        req.setAttribute("admin",adminMain);
        req.setAttribute("supervisorList",supervisorListMain);
@@ -329,7 +333,7 @@ public class AdminServlet extends HttpServlet {
         req.setAttribute("classList",classListMain);
         int id = Integer.parseInt(req.getParameter("id"));
         Student student = studentService.findById(id);
-
+        System.out.println(student);
         req.setAttribute("student",student);
         RequestDispatcher rd = req.getRequestDispatcher("/admin/studentEdit.jsp");
         try {

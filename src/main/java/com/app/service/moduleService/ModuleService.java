@@ -16,7 +16,7 @@ public class ModuleService implements IModuleService {
 
     private static final String SELECT_ALL_MODULE = "SELECT * FROM module;";
     Connection connection = ConnectionJDBC.getConnection();
-    IClassService classService = new ClassService();
+
 
     @Override
     public List<Module> findAll() {

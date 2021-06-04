@@ -23,7 +23,7 @@ public class StudentService implements IStudentService {
     private static final String SELECT_MODULE_BY_STUDENT_ID_1 = "select module_id from student_module where student_id=?;";
     private static final String SELECT_FROM_STUDENT_WHERE_STUDENT_ID = "SELECT * FROM student WHERE student.id=?;";
     private static final String INSERT_STUDENT = "INSERT INTO student(name, email, password, address_id, class_id, dob, url_img, status_id ) VALUE (?,?,?,?,?,?,?,?);\n;";
-    private static final String DELETE_STUDENT = "CALL delete_student(?);";
+    private static final String DELETE_STUDENT = "delete from student where id = ?;";
     private static final String UPDATE_STUDENT_BY_ID = "UPDATE student SET name=?, email=?, password=?, address_id=?, class_id=?, dob=?, url_img=?, status_id=? WHERE student.id =?;";
     Connection connection = ConnectionJDBC.getConnection();
     IAddressService addressService = new AddressService();

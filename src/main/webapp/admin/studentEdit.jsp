@@ -61,31 +61,31 @@
                 <input class="form-control" name="dob" id="dob"  type="date" value="${student.dob}"></br>
             </div>
             <div class="form-group">
-                <label class="form-label" for="class_id"></label>
+                <label class="form-label" for="class_id">Thuộc lớp</label>
                 <select class="form-select" name="class_id"  id="class_id" >
-                    <c:forEach items="${classList}" var="class" >
-                        <option value="${class.id}"
-                                <c:if test="${class.id == student.classOfAcademy.id}">selected="true"</c:if>>${class.name}
+                    <c:forEach items="${classList}" var="cl" >
+                        <option value="${cl.id}"
+                                <c:if test="${cl.id == student.classOfAcademy.id}">selected="true"</c:if>>${cl.name}
                         </option>
                     </c:forEach>
                 </select></br>
             </div>
             <div class="form-group">
-                <label class="form-label" for="status_id"></label>
+                <label class="form-label" for="status_id">Tình trạng</label>
                 <select class="form-select" name="status_id"  id="status_id" >
                     <c:forEach items="${statusList}" var="status" >
                         <option value="${status.id}"
-                                <c:if test="${status.id == supervisor.status.id}">selected="true"</c:if>>${status.name}
+                                <c:if test="${status.id == student.status.id}">selected="true"</c:if>>${status.name}
                         </option>
                     </c:forEach>
                 </select></br>
             </div>
             <div class="form-group">
-                <label class="form-label" for="address_id"></label>
+                <label class="form-label" for="address_id">Địa chỉ</label>
                 <select class="form-select" name="address_id"  id="address_id"  >
                     <c:forEach items="${addressList}" var="address" >
                         <option value="${address.id}"
-                                <c:if test="${address.id == supervisor.address.id}">selected="true"</c:if>>${address.name}
+                                <c:if test="${address.id == student.address.id}">selected="true"</c:if>>${address.name}
                         </option>
                     </c:forEach>
                 </select></br>

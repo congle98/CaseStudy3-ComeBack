@@ -36,17 +36,20 @@
         <input name="url" id="url" class="form-control"  type="text" placeholder="link ảnh">
         <label class="form-label" for="dob">Ngày sinh</label>
         <input name="dob" id="dob" class="form-control"  type="date" placeholder="ngày sinh">
-        <select name="class_id" class="form-select">
-            <c:forEach items="${classList}" var="class">
-                <option value="${class.id}">${class.name}</option>
+        <label class="form-label" for="class_id">Thuộc lớp lớp</label>
+        <select name="class_id" id ="class_id"  class="form-select">
+            <c:forEach items="${classList}" var="cl">
+                <option value="${cl.id}">${cl.name}</option>
             </c:forEach>
         </select>
-        <select name="address_id" class="form-select">
+        <label class="form-label" for="address_id">Địa chỉ</label>
+        <select name="address_id" id = "address_id" class="form-select">
             <c:forEach items="${addressList}" var="address">
                 <option value="${address.id}">${address.name}</option>
             </c:forEach>
         </select>
-        <select name="status_id" class="form-select">
+        <label class="form-label" for="status_id">Tình trạng</label>
+        <select name="status_id" id="status_id" class="form-select">
             <c:forEach items="${statusList}" var="status">
                 <option value="${status.id}">${status.name}</option>
             </c:forEach>
