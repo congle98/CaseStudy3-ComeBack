@@ -28,7 +28,7 @@ public class ModuleService implements IModuleService {
             throwables.printStackTrace();
         }
 
-        return null;
+        return moduleList;
     }
 
     @Override
