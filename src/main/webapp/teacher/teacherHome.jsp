@@ -15,13 +15,15 @@
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 <body>
-<div class="container-fluid">
-    <a class="navbar-brand btn btn-outline-info" href="/Teacher?action=accountManager">ACCOUNT MANAGEMENT</a>
-    <a class="navbar-brand btn btn-outline-info" href="/Teacher?action=classManager">CLASSROOM MANAGEMENT</a>
-    <a class="navbar-brand btn btn-outline-info" href="/Teacher?action=studentManager">STUDENT MANAGEMENT</a>
-    <h3 style="color: red">Teacher : ${teacher.name}</h3>
-    <a class="navbar-brand btn btn-outline-info" href="/Teacher?action=logOut">LogOut</a>
-</div>
+
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand btn btn-outline-info" href="/Teacher?action=accountManager">Account Management</a>
+        <a class="navbar-brand btn btn-outline-info" href="/Teacher?action=classManager">Classroom Management</a>
+        <h3 style="color: red">Teacher : ${teacher.name}</h3>
+        <a class="navbar-brand btn btn-outline-info" href="/Teacher?action=logOut">LogOut</a>
+    </div>
+</nav>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"

@@ -110,7 +110,7 @@
 
             @Override
             public List<ClassOfAcademy> findClassByTeacherId(int teacher_id) {
-                List<ClassOfAcademy>  listClassOfAcademies = null;
+                List<ClassOfAcademy>  listClassOfAcademies = new ArrayList<>();
                 PreparedStatement preparedStatement = null;
                 try {
                     preparedStatement = connection.prepareStatement(SELECT_ALL_CLASS_BY_TEACHER_ID);

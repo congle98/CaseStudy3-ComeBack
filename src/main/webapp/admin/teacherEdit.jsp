@@ -36,11 +36,11 @@
     <div class="form-product">
         <form method="post" >
             <div class="form-group">
-                <label class="form-label" for="id">Id giáo vụ</label>
+                <label class="form-label" for="id">Id giáo viên</label>
                 <input class="form-control" name="id" id="id" value="${teacher.id}" disabled>
             </div>
             <div class="form-group">
-                <label class="form-label" for="name">Tên giáo vụ</label>
+                <label class="form-label" for="name">Tên giáo viên</label>
                 <input class="form-control" name="name" id="name" value="${teacher.name}"></br>
             </div>
             <div class="form-group">

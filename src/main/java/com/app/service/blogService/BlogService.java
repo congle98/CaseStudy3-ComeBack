@@ -18,6 +18,7 @@ public class BlogService implements IBlogService {
     public static final String CREATE_BLOG = "insert into blog(description, date, class_id) VALUES (?,?,?);";
     public static final String DELETE_FROM_BLOG_WHERE_ID = "delete from blog where id = ?;";
     public static final String UPDATE_BLOG_BY_ID = "update blog set description = ?, date = ?, class_id = ? where id = ?;";
+    public static final String SELECT_ALL_BLOG_BY_CLASS_ID = "select * from blog where class_id = ?;";
     Connection connection = ConnectionJDBC.getConnection();
     IClassService classService = new ClassService();
 
@@ -93,13 +94,34 @@ public class BlogService implements IBlogService {
     public void edit(int id, Blog blog) {
         try {
             PreparedStatement statement = connection.prepareStatement(UPDATE_BLOG_BY_ID);
-            statement.setString(1,blog.getDescription());
+            statement.setString(1, blog.getDescription());
             statement.setDate(2, Date.valueOf(blog.getDate()));
-            statement.setInt(3,blog.getClassOfAcademy().getId());
-            statement.setInt(4,id);
+            statement.setInt(3, blog.getClassOfAcademy().getId());
+            statement.setInt(4, id);
             statement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
+    public  List<Blog> findAllBlogsByClassId(int class_id){
+        List<Blog> blogList = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_BLOG_BY_CLASS_ID);
+            preparedStatement.setInt(1,class_id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int blog_id = resultSet.getInt("id");
+                String description = resultSet.getString("description");
+                LocalDate date = resultSet.getDate("date").toLocalDate();
+                int classid = resultSet.getInt("class_id");
+                ClassOfAcademy classOfAcademy = classService.findById(classid);
+                 Blog blog = new Blog(blog_id,description,date, classOfAcademy);
+                 blogList.add(blog);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return blogList;
+    }
 }
+

@@ -79,6 +79,8 @@ public class UserServlet extends HttpServlet {
                 if(t.getEmail().equals(email)&& t.getPassword().equals(password)) {
                     check = true;
                         user = t;
+                        TeacherServlet.teacherMain = user;
+
                         req.setAttribute("teacher",user);
                         rd.forward(req,resp);
                 }

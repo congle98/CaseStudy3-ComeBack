@@ -25,6 +25,7 @@ public class StudentService implements IStudentService {
     private static final String INSERT_STUDENT = "INSERT INTO student(name, email, password, address_id, class_id, dob, url_img, status_id ) VALUE (?,?,?,?,?,?,?,?);\n;";
     private static final String DELETE_STUDENT = "delete from student where id = ?;";
     private static final String UPDATE_STUDENT_BY_ID = "UPDATE student SET name=?, email=?, password=?, address_id=?, class_id=?, dob=?, url_img=?, status_id=? WHERE student.id =?;";
+    private static final String SELECT_ALL_STUDENT_BY_CLASS_ID = "select * from student where class_id = ?;";
     Connection connection = ConnectionJDBC.getConnection();
     IAddressService addressService = new AddressService();
     IClassService classService = new ClassService();
@@ -102,6 +103,34 @@ public class StudentService implements IStudentService {
             throwables.printStackTrace();
         }
         return student;
+    }
+
+    @Override
+    public List<Student> findStudentByClassId(int Class_id) {
+        List<Student> studentList = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_STUDENT_BY_CLASS_ID);
+            preparedStatement.setInt(1,Class_id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String pass = resultSet.getString("password");
+                Address address = addressService.findById(resultSet.getInt("address_id"));
+                ClassOfAcademy cl = classService.findById(resultSet.getInt("class_id"));
+                LocalDate dob = resultSet.getDate("dob").toLocalDate();
+                String img = resultSet.getString("url_img");
+                Status status = statusService.findById(resultSet.getInt("status_id"));
+//                List<Module> listMD = findMoudle(1);
+//               listStudent.add(new Student(id, name, email, pass, address, cl, dob, img, status, listMD));
+                Student student = new Student(id, name, email, pass,img,  address, dob, status, cl);
+                studentList.add(student);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return studentList;
     }
 
     @Override

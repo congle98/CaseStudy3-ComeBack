@@ -9,4 +9,5 @@ public interface IService<T> {
 
     void delete(int id);
     void edit(int id, T t);
+
 }
