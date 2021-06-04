@@ -15,6 +15,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <style>
+        .form-product-1{
+            margin: 75px auto;
+        }
+        .form-product{
+            width: 90%;
+            height: 90%;
+            margin: auto;
+
+        }
+        body{
+            background: #e9ecef;
+        }
+    </style>
     <title>Hello, world!</title>
 </head>
 <body>

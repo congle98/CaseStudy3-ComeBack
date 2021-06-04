@@ -24,6 +24,10 @@
             width: 90%;
             height: 90%;
             margin: auto;
+
+        }
+        body{
+            background: #e9ecef;
         }
     </style>
 </head>
@@ -35,24 +39,29 @@
         <a class="navbar-brand btn btn-outline-info" href="/Teacher?action=logOut">LogOut</a>
     </div>
 </nav>
-<div class="create-form col-sm-5  border border-secondary border-5 rounded form-product-1">
+<div class="col-sm-5  border border-secondary border-5 rounded   form-product-1">
     <p>${message}</p>
     <div class="form-product">
         <form method="post">
-            <label class="form-label" for="description">Nhập nội dung</label>
-            <input name="description" id="description"  class="form-control" type="text" placeholder="nội dung">
-            <label class="form-label" for="date">Nhập ngày đăng</label>
-            <input name="date" id="date"  class="form-control" type="date" placeholder="ngày đăng">
-            <label class="form-label" for="class_id">Lớp</label>
-            <select name="class_id" id="class_id" class="form-select">
-                <c:forEach items="${classList}" var="cl">
-                    <option value="${cl.id}">${cl.name}</option>
-                </c:forEach>
-            </select>
-
-
-
-            <button  class="btn btn-danger" type="submit">Thêm mới</button>
+            <div class="form-group">
+                <label class="form-label" for="description">Nhập nội dung</label>
+                <input name="description" id="description"  class="form-control" type="text" placeholder="nội dung">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="date">Nhập ngày đăng</label>
+                <input name="date" id="date"  class="form-control" type="date" placeholder="ngày đăng">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="class_id">Lớp</label>
+                <select name="class_id" id="class_id" class="form-select">
+                    <c:forEach items="${classList}" var="cl">
+                        <option value="${cl.id}">${cl.name}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="form-group">
+                <button  class="btn btn-danger" type="submit">Thêm mới</button>
+            </div>
         </form>
     </div>
 

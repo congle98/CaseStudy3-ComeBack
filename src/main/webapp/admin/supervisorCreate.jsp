@@ -18,14 +18,16 @@
     <style>
         .form-product-1{
             margin: 75px auto;
-            /*height: 570px;*/
         }
         .form-product{
             width: 90%;
             height: 90%;
             margin: auto;
-        }
 
+        }
+        body{
+            background: #e9ecef;
+        }
     </style>
     <title>Hello, world!</title>
 </head>
@@ -35,33 +37,54 @@
         <a class="navbar-brand btn btn-outline-info" href="/Admin?action=home">Back to home</a>
     </div>
 </nav>
-<div class="create-form col-sm-5  border border-secondary border-5 rounded form-product-1">
+<div class="col-sm-5  border border-secondary border-5 rounded  form-product-1">
     <p>${message}</p>
     <div class="form-product">
         <form method="post">
-            <label class="form-label" for="name">Nhập tên</label>
-            <input name="name" id="name"  class="form-control" type="text" placeholder="tên">
-            <label class="form-label" for="email">Nhập email</label>
-            <input name="email" id="email"  class="form-control" type="text" placeholder="email">
-            <label class="form-label" for="password">Nhập mật khẩu</label>
-            <input name="password" id="password" class="form-control"  type="text" placeholder="password">
-            <label class="form-label" for="url">Nhập link ảnh</label>
-            <input name="url" id="url" class="form-control"  type="text" placeholder="link ảnh">
-            <label class="form-label" for="dob">Ngày sinh</label>
-            <input name="dob" id="dob" class="form-control"  type="date" placeholder="ngày sinh">
-            <select name="address_id" class="form-select">
-                <c:forEach items="${addressList}" var="address">
-                    <option value="${address.id}">${address.name}</option>
-                </c:forEach>
-            </select>
-            <select name="status_id" class="form-select">
-                <c:forEach items="${statusList}" var="status">
-                    <option value="${status.id}">${status.name}</option>
-                </c:forEach>
-            </select>
+            <div class="form-group">
+                <label class="form-label" for="name">Nhập tên</label>
+                <input name="name" id="name"  class="form-control" type="text" placeholder="tên">
+            </div>
 
+            <div class="form-group">
+                <label class="form-label" for="email">Nhập email</label>
+                <input name="email" id="email"  class="form-control" type="text" placeholder="email">
+            </div>
 
-            <button  class="btn btn-danger" type="submit">Thêm mới</button>
+            <div class="form-group">
+                <label class="form-label" for="password">Nhập mật khẩu</label>
+                <input name="password" id="password" class="form-control"  type="text" placeholder="password">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="url">Nhập link ảnh</label>
+                <input name="url" id="url" class="form-control"  type="text" placeholder="link ảnh">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="dob">Ngày sinh</label>
+                <input name="dob" id="dob" class="form-control"  type="date" placeholder="ngày sinh">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="address_id">Quê quán</label>
+                <select name="address_id" class="form-select" id="address_id">
+                    <c:forEach items="${addressList}" var="address">
+                        <option value="${address.id}">${address.name}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="status_id">Trạng thái</label>
+                <select name="status_id" class="form-select" id="status_id">
+                    <c:forEach items="${statusList}" var="status">
+                        <option value="${status.id}">${status.name}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="form-group">
+                <button  class="btn btn-danger" type="submit">Thêm mới</button>
+            </div>
         </form>
     </div>
 

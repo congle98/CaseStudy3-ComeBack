@@ -27,6 +27,7 @@
     }
     body{
       background-image: url(/style/img/login-background.jpg);
+      background-repeat: no-repeat ;
 
     }
     .form-title{

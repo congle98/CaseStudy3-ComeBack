@@ -21,6 +21,10 @@
             width: 90%;
             height: 90%;
             margin: auto;
+
+        }
+        body{
+            background:#e9ecef;
         }
     </style>
 </head>
