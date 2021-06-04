@@ -1,14 +1,13 @@
-package com.app.service.teacherService;
+package com.app.service.teacherservice;
 
 import com.app.config.ConnectionJDBC;
 import com.app.model.Address;
 import com.app.model.Status;
 import com.app.model.Teacher;
-import com.app.service.IService;
-import com.app.service.addressService.AddressService;
-import com.app.service.addressService.IAddressService;
-import com.app.service.statusService.IStatusService;
-import com.app.service.statusService.StatusService;
+import com.app.service.addressservice.AddressService;
+import com.app.service.addressservice.IAddressService;
+import com.app.service.statusservice.IStatusService;
+import com.app.service.statusservice.StatusService;
 
 import java.sql.*;
 import java.time.LocalDate;

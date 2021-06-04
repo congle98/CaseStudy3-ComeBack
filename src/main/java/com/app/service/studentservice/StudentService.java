@@ -1,17 +1,16 @@
-package com.app.service.studentService;
+package com.app.service.studentservice;
 
 import com.app.config.ConnectionJDBC;
 import com.app.model.*;
 import com.app.model.ClassOfAcademy;
-import com.app.service.IService;
-import com.app.service.addressService.AddressService;
-import com.app.service.addressService.IAddressService;
-import com.app.service.classService.ClassService;
-import com.app.service.classService.IClassService;
-import com.app.service.moduleService.IModuleService;
-import com.app.service.moduleService.ModuleService;
-import com.app.service.statusService.IStatusService;
-import com.app.service.statusService.StatusService;
+import com.app.service.addressservice.AddressService;
+import com.app.service.addressservice.IAddressService;
+import com.app.service.classservice.ClassService;
+import com.app.service.classservice.IClassService;
+import com.app.service.moduleservice.IModuleService;
+import com.app.service.moduleservice.ModuleService;
+import com.app.service.statusservice.IStatusService;
+import com.app.service.statusservice.StatusService;
 
 import java.sql.*;
 import java.time.LocalDate;

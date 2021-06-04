@@ -1,14 +1,13 @@
 
-        package com.app.service.classService;
+        package com.app.service.classservice;
         import com.app.config.ConnectionJDBC;
         import com.app.model.ClassOfAcademy;
         import com.app.model.Course;
         import com.app.model.Teacher;
-        import com.app.service.courseService.CourseService;
-        import com.app.service.IService;
-        import com.app.service.courseService.ICourseService;
-        import com.app.service.teacherService.ITeacherService;
-        import com.app.service.teacherService.TeacherService;
+        import com.app.service.courseservice.CourseService;
+        import com.app.service.courseservice.ICourseService;
+        import com.app.service.teacherservice.ITeacherService;
+        import com.app.service.teacherservice.TeacherService;
 
         import java.sql.Connection;
         import java.sql.PreparedStatement;

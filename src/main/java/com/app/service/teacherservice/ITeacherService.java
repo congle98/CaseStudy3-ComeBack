@@ -1,4 +1,4 @@
-package com.app.service.teacherService;
+package com.app.service.teacherservice;
 
 import com.app.model.Teacher;
 import com.app.service.IService;

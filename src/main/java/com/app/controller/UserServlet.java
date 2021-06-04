@@ -1,9 +1,8 @@
 package com.app.controller;
 
 import com.app.model.Supervisor;
-import com.app.service.IService;
-import com.app.service.supervisorService.ISupervisorService;
-import com.app.service.supervisorService.SupervisorService;
+import com.app.service.supervisorservice.ISupervisorService;
+import com.app.service.supervisorservice.SupervisorService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

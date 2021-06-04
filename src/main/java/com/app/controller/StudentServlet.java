@@ -1,8 +1,7 @@
 package com.app.controller;
 
-import com.app.service.IService;
-import com.app.service.classService.ClassService;
-import com.app.service.classService.IClassService;
+import com.app.service.classservice.ClassService;
+import com.app.service.classservice.IClassService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

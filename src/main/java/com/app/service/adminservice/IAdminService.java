@@ -1,4 +1,4 @@
-package com.app.service.adminService;
+package com.app.service.adminservice;
 
 import com.app.model.Admin;
 import com.app.service.IService;

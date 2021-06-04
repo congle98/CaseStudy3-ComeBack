@@ -44,6 +44,13 @@ public class Module {
         this.studentList = studentList;
     }
 
+    public Module(int id, String name, LocalDate dateStart, LocalDate dateEnd) {
+        this.id = id;
+        this.name = name;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+    }
+
     public int getId() {
         return id;
     }

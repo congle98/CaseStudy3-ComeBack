@@ -1,8 +1,7 @@
-package com.app.service.courseService;
+package com.app.service.courseservice;
 
 import com.app.config.ConnectionJDBC;
 import com.app.model.Course;
-import com.app.service.IService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

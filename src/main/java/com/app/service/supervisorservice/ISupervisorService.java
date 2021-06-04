@@ -1,4 +1,4 @@
-package com.app.service.supervisorService;
+package com.app.service.supervisorservice;
 
 import com.app.model.Supervisor;
 import com.app.service.IService;

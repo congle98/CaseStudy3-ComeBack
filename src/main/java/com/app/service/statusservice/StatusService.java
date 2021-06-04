@@ -1,8 +1,7 @@
-package com.app.service.statusService;
+package com.app.service.statusservice;
 
 import com.app.config.ConnectionJDBC;
 import com.app.model.Status;
-import com.app.service.IService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
