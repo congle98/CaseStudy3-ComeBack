@@ -1,8 +1,7 @@
-package com.app.service.addressService;
+package com.app.service.addressservice;
 
 import com.app.config.ConnectionJDBC;
 import com.app.model.Address;
-import com.app.service.IService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,11 +1,10 @@
-package com.app.service.blogService;
+package com.app.service.blogservice;
 
 import com.app.config.ConnectionJDBC;
 import com.app.model.Blog;
 import com.app.model.ClassOfAcademy;
-import com.app.service.classService.ClassService;
-import com.app.service.IService;
-import com.app.service.classService.IClassService;
+import com.app.service.classservice.ClassService;
+import com.app.service.classservice.IClassService;
 
 import java.sql.*;
 import java.time.LocalDate;

@@ -1,17 +1,16 @@
 package com.app.controller;
 
 import com.app.model.*;
-import com.app.service.IService;
-import com.app.service.addressService.AddressService;
-import com.app.service.addressService.IAddressService;
-import com.app.service.classService.ClassService;
-import com.app.service.classService.IClassService;
-import com.app.service.moduleService.IModuleService;
-import com.app.service.moduleService.ModuleService;
-import com.app.service.statusService.IStatusService;
-import com.app.service.statusService.StatusService;
-import com.app.service.studentService.IStudentService;
-import com.app.service.studentService.StudentService;
+import com.app.service.addressservice.AddressService;
+import com.app.service.addressservice.IAddressService;
+import com.app.service.classservice.ClassService;
+import com.app.service.classservice.IClassService;
+import com.app.service.moduleservice.IModuleService;
+import com.app.service.moduleservice.ModuleService;
+import com.app.service.statusservice.IStatusService;
+import com.app.service.statusservice.StatusService;
+import com.app.service.studentservice.IStudentService;
+import com.app.service.studentservice.StudentService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,7 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 

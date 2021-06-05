@@ -1,18 +1,18 @@
 package com.app.controller;
 
 import com.app.model.*;
-import com.app.service.addressService.AddressService;
-import com.app.service.addressService.IAddressService;
-import com.app.service.blogService.BlogService;
-import com.app.service.blogService.IBlogService;
-import com.app.service.classService.ClassService;
-import com.app.service.classService.IClassService;
-import com.app.service.statusService.IStatusService;
-import com.app.service.statusService.StatusService;
-import com.app.service.studentService.IStudentService;
-import com.app.service.studentService.StudentService;
-import com.app.service.teacherService.ITeacherService;
-import com.app.service.teacherService.TeacherService;
+import com.app.service.addressservice.AddressService;
+import com.app.service.addressservice.IAddressService;
+import com.app.service.blogservice.BlogService;
+import com.app.service.blogservice.IBlogService;
+import com.app.service.classservice.ClassService;
+import com.app.service.classservice.IClassService;
+import com.app.service.statusservice.IStatusService;
+import com.app.service.statusservice.StatusService;
+import com.app.service.studentservice.IStudentService;
+import com.app.service.studentservice.StudentService;
+import com.app.service.teacherservice.ITeacherService;
+import com.app.service.teacherservice.TeacherService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
