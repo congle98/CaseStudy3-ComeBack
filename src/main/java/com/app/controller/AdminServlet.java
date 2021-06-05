@@ -102,6 +102,9 @@ public class AdminServlet extends HttpServlet {
             case"deleteStudent":
                 deleteStudent(req,resp);
                 break;
+            case "createCourse":
+                showFormCourseCreate(req,resp);
+                break;
             case "logOut":
                 adminLoginPage(req,resp);
                 break;
@@ -110,7 +113,6 @@ public class AdminServlet extends HttpServlet {
                 break;
         }
     }
-
 
 
 
@@ -146,14 +148,15 @@ public class AdminServlet extends HttpServlet {
             case "editStudent":
                 editStudent(req,resp);
                 break;
+            case "createCourse":
+                createCourse(req,resp);
+                break;
 
             default:
                 adminLoginPage(req,resp);
                 break;
         }
     }
-
-
 
 
     private void adminLoginPage(HttpServletRequest req, HttpServletResponse resp){
@@ -395,6 +398,26 @@ public class AdminServlet extends HttpServlet {
         adminHomePage(req,resp);
 
     }
+
+    private void createCourse(HttpServletRequest req, HttpServletResponse resp) {
+        String name = req.getParameter("name");
+        Double price = Double.valueOf(req.getParameter("price"));
+        Course course = new Course(name,price);
+        courseService.save(course);
+        adminHomePage(req,resp);
+
+    }
+    private void showFormCourseCreate(HttpServletRequest req, HttpServletResponse resp) {
+        RequestDispatcher rd = req.getRequestDispatcher("/admin/courseCreate.jsp");
+        try {
+            rd.forward(req,resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 

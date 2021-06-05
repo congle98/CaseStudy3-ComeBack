@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface IStudentService extends IService<Student> {
     List<Student> findStudentByClassId(int Class_id);
+    double findScoreByStudentIModuleId(int student_id,int module_id);
+    void updateScoreByStudentIModuleId(int student_id,int module_id,double score);
 }

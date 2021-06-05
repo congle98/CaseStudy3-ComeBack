@@ -26,6 +26,8 @@ public class StudentService implements IStudentService {
     private static final String DELETE_STUDENT = "delete from student where id = ?;";
     private static final String UPDATE_STUDENT_BY_ID = "UPDATE student SET name=?, email=?, password=?, address_id=?, class_id=?, dob=?, url_img=?, status_id=? WHERE student.id =?;";
     private static final String SELECT_ALL_STUDENT_BY_CLASS_ID = "select * from student where class_id = ?;";
+    private static final String SELECT_ALL_STUDENT_BY_MODULE_ID = "select * from student join score_of_student sos on student.id = sos.student_id where sos.module_id = ?;";
+    private static final String SELECT_SCORE_BY_STUDENT_ID_MODULE_ID = "select score from score_of_student where student_id = ? and module_id = ?;";
     Connection connection = ConnectionJDBC.getConnection();
     IAddressService addressService = new AddressService();
     IClassService classService = new ClassService();
@@ -48,9 +50,9 @@ public class StudentService implements IStudentService {
                 LocalDate dob = resultSet.getDate("dob").toLocalDate();
                 String img = resultSet.getString("url_img");
                 Status status = statusService.findById(resultSet.getInt("status_id"));
-//                List<Module> listMD = findMoudle(1);
-//               listStudent.add(new Student(id, name, email, pass, address, cl, dob, img, status, listMD));
-                listStudent.add(new Student(id, name, email, pass,img,  address, dob, status,cl));
+                List<Module> moduleList = moduleServices.findByStudentId(id);
+                 Student student = new Student(id, name, email, pass,img,  address, dob, status,moduleList, cl);
+                listStudent.add(student);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -95,9 +97,8 @@ public class StudentService implements IStudentService {
                 LocalDate dob = resultSet.getDate("dob").toLocalDate();
                 String img = resultSet.getString("url_img");
                 Status status = statusService.findById(resultSet.getInt("status_id"));
-//                List<Module> listMD = findMoudle(1);
-//               listStudent.add(new Student(id, name, email, pass, address, cl, dob, img, status, listMD));
-                student = new Student(id, name, email, pass,img,  address, dob, status, cl);
+                List<Module> moduleList = moduleServices.findByStudentId(id);
+                student = new Student(id_, name, email, pass,img,  address, dob, status,moduleList, cl);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -122,9 +123,8 @@ public class StudentService implements IStudentService {
                 LocalDate dob = resultSet.getDate("dob").toLocalDate();
                 String img = resultSet.getString("url_img");
                 Status status = statusService.findById(resultSet.getInt("status_id"));
-//                List<Module> listMD = findMoudle(1);
-//               listStudent.add(new Student(id, name, email, pass, address, cl, dob, img, status, listMD));
-                Student student = new Student(id, name, email, pass,img,  address, dob, status, cl);
+                List<Module> moduleList = moduleServices.findByStudentId(id);
+                Student student = new Student(id, name, email, pass,img,  address, dob, status,moduleList, cl);
                 studentList.add(student);
             }
         } catch (SQLException throwables) {
@@ -163,6 +163,40 @@ public class StudentService implements IStudentService {
 
     }
 
+    public double findScoreByStudentIModuleId(int student_id,int module_id){
+        double score = 0;
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(SELECT_SCORE_BY_STUDENT_ID_MODULE_ID);
+            preparedStatement.setInt(1,student_id);
+            preparedStatement.setInt(2,module_id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                score =resultSet.getInt(1);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+      return score;
+    }
+    public  void updateScoreByStudentIModuleId(int student_id,int module_id,double score){
+        String delete = "delete from score_of_student where student_id = ? and module_id = ?;";
+        String update = "insert into score_of_student(student_id,module_id,score) values(?,?,?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(delete);
+            preparedStatement.setInt(1,student_id);
+            preparedStatement.setInt(2,module_id);
+            preparedStatement.executeUpdate();
+            PreparedStatement preparedStatement1 = connection.prepareStatement(update);
+            preparedStatement1.setInt(1,student_id);
+            preparedStatement1.setInt(2,module_id);
+            preparedStatement1.setDouble(3,score);
+            preparedStatement1.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
     @Override
     public void edit(int id, Student student) {
         try {

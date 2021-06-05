@@ -1,9 +1,12 @@
 package com.app.controller;
 
+import com.app.model.Student;
 import com.app.model.Supervisor;
 import com.app.model.Teacher;
 import com.app.model.User;
 import com.app.service.IService;
+import com.app.service.studentService.IStudentService;
+import com.app.service.studentService.StudentService;
 import com.app.service.supervisorService.ISupervisorService;
 import com.app.service.supervisorService.SupervisorService;
 import com.app.service.teacherService.ITeacherService;
@@ -24,7 +27,10 @@ public class UserServlet extends HttpServlet {
 
     ISupervisorService supervisorService = new SupervisorService();
     ITeacherService teacherService = new TeacherService();
+    IStudentService studentService = new StudentService();
     static User user = null;
+    static Student studentUser = null;
+    static Supervisor supervisorUser = null;
      @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
@@ -51,6 +57,7 @@ public class UserServlet extends HttpServlet {
         switch (action){
 
             case "student":
+                studentLogin(req,resp);
                 break;
             case "supervisor":
                 supervisorLogin(req,resp);
@@ -63,6 +70,34 @@ public class UserServlet extends HttpServlet {
                 break;
 
         }
+    }
+
+    private void studentLogin(HttpServletRequest req, HttpServletResponse resp) {
+        RequestDispatcher rd = req.getRequestDispatcher("/student/studentHome.jsp");
+        String email = req.getParameter("email");
+        String password = req.getParameter("password");
+        List<Student> studentList = null;
+        try {
+            studentList = studentService.findAll();
+
+            boolean check = false;
+            for (Student s: studentList
+            ) {
+                if(s.getEmail().equals(email)&& s.getPassword().equals(password)) {
+                    check = true;
+                    studentUser = s;
+                    StudentServlet.studentMain = studentUser;
+                    req.setAttribute("student",studentUser);
+                    rd.forward(req,resp);
+                }
+            }
+            if (!check){
+                comeBackIndex(req,resp);
+            }
+        } catch (Exception throwables) {
+            throwables.printStackTrace();
+        }
+
     }
 
     private void teacherLogin(HttpServletRequest req, HttpServletResponse resp) {
@@ -95,18 +130,23 @@ public class UserServlet extends HttpServlet {
     }
 
     private void supervisorLogin(HttpServletRequest req, HttpServletResponse resp) {
+        RequestDispatcher rd = req.getRequestDispatcher("/teacher/teacherHome.jsp");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         List<Supervisor> supervisorList = null;
         try {
-            supervisorList = supervisorService.findAll();
-            System.out.println(supervisorList);
+            supervisorList =  supervisorService.findAll();
+
             boolean check = false;
             for (Supervisor s: supervisorList
             ) {
                 if(s.getEmail().equals(email)&& s.getPassword().equals(password)) {
                     check = true;
-                    user = s;
+                    supervisorUser = s;
+                    SupervisorServlet.supervisorMain = supervisorUser;
+
+                    req.setAttribute("supervisor",supervisorUser);
+                    rd.forward(req,resp);
                 }
             }
             if (!check){

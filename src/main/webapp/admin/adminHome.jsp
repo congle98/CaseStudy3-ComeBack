@@ -28,6 +28,7 @@
         <a class="navbar-brand btn btn-outline-info" href="/Admin?action=createSupervisor">CREATE NEW SUPERVISOR</a>
         <a class="navbar-brand btn btn-outline-info" href="/Admin?action=createTeacher">CREATE NEW TEACHER</a>
         <a class="navbar-brand btn btn-outline-info" href="/Admin?action=createStudent">CREATE NEW STUDENT</a>
+        <a class="navbar-brand btn btn-outline-info" href="/Admin?action=createCourse">CREATE NEW COURSE</a>
         <h3 style="color: red">Admin : ${admin.id}</h3>
         <a class="navbar-brand btn btn-outline-info" href="/Admin?action=logOut">LogOut</a>
     </div>

@@ -4,8 +4,8 @@ com/app/model/Status.java
  com.app.model.Status
 com/app/model/Admin.java
  com.app.model.Admin
-com/app/service/moduleService/ModuleService.java
- com.app.service.moduleService.ModuleService
+com/app/model/Student.java
+ com.app.model.Student
 com/app/service/statusService/StatusService.java
  com.app.service.statusService.StatusService
 com/app/service/courseService/CourseService.java
@@ -20,20 +20,20 @@ com/app/service/adminService/IAdminService.java
  com.app.service.adminService.IAdminService
 com/app/service/addressService/AddressService.java
  com.app.service.addressService.AddressService
-com/app/service/studentService/StudentService.java
- com.app.service.studentService.StudentService
+com/app/service/classService/ClassService.java
+ com.app.service.classService.ClassService
 com/app/model/Course.java
  com.app.model.Course
 com/app/service/teacherService/ITeacherService.java
  com.app.service.teacherService.ITeacherService
-com/app/model/Student.java
- com.app.model.Student
+com/app/model/ClassOfAcademy.java
+ com.app.model.ClassOfAcademy
 com/app/model/User.java
  com.app.model.User
 com/app/service/teacherService/TeacherService.java
  com.app.service.teacherService.TeacherService
-com/app/model/Module.java
- com.app.model.Module
+com/app/service/statusService/IStatusService.java
+ com.app.service.statusService.IStatusService
 com/app/service/moduleService/IModuleService.java
  com.app.service.moduleService.IModuleService
 com/app/service/courseService/ICourseService.java
@@ -46,8 +46,8 @@ com/app/model/Address.java
  com.app.model.Address
 com/app/service/adminService/AdminService.java
  com.app.service.adminService.AdminService
-com/app/controller/AdminServlet.java
- com.app.controller.AdminServlet
+com/app/service/supervisorService/ISupervisorService.java
+ com.app.service.supervisorService.ISupervisorService
 com/app/service/IService.java
  com.app.service.IService
 com/app/model/Blog.java
@@ -56,21 +56,21 @@ com/app/service/supervisorService/SupervisorService.java
  com.app.service.supervisorService.SupervisorService
 com/app/service/addressService/IAddressService.java
  com.app.service.addressService.IAddressService
-com/app/service/studentService/IStudentService.java
- com.app.service.studentService.IStudentService
+com/app/service/moduleService/ModuleService.java
+ com.app.service.moduleService.ModuleService
 com/app/service/blogService/BlogService.java
  com.app.service.blogService.BlogService
-com/app/service/classService/ClassService.java
- com.app.service.classService.ClassService
-com/app/model/ClassOfAcademy.java
- com.app.model.ClassOfAcademy
-com/app/service/supervisorService/ISupervisorService.java
- com.app.service.supervisorService.ISupervisorService
+com/app/model/Module.java
+ com.app.model.Module
+com/app/service/studentService/IStudentService.java
+ com.app.service.studentService.IStudentService
+com/app/service/studentService/StudentService.java
+ com.app.service.studentService.StudentService
 com/app/controller/StudentServlet.java
  com.app.controller.StudentServlet
-com/app/service/statusService/IStatusService.java
- com.app.service.statusService.IStatusService
-com/app/controller/UserServlet.java
- com.app.controller.UserServlet
 com/app/controller/TeacherServlet.java
  com.app.controller.TeacherServlet
+com/app/controller/UserServlet.java
+ com.app.controller.UserServlet
+com/app/controller/AdminServlet.java
+ com.app.controller.AdminServlet

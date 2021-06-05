@@ -1,8 +1,17 @@
 package com.app.controller;
 
+import com.app.model.*;
 import com.app.service.IService;
+import com.app.service.addressService.AddressService;
+import com.app.service.addressService.IAddressService;
 import com.app.service.classService.ClassService;
 import com.app.service.classService.IClassService;
+import com.app.service.moduleService.IModuleService;
+import com.app.service.moduleService.ModuleService;
+import com.app.service.statusService.IStatusService;
+import com.app.service.statusService.StatusService;
+import com.app.service.studentService.IStudentService;
+import com.app.service.studentService.StudentService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,34 +21,151 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
 
 
-@WebServlet(name = "StudentServlet", value = "/student")
+@WebServlet(name = "StudentServlet", value = "/Student")
 public class StudentServlet extends HttpServlet {
    IClassService classService = new ClassService();
+   IStatusService statusService = new StatusService();
+   IAddressService addressService = new AddressService();
+   IModuleService moduleService = new ModuleService();
+   IStudentService studentService = new StudentService();
+   static Student studentMain = UserServlet.studentUser;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        try {
-            if(action == null) action = "";
-            switch (action){
-            default:
-                    showAllStataus(req,resp);
-                break;
-            }
-        } catch (SQLException throwables) {
-                throwables.printStackTrace();
+        if(action==null){
+            action = "";
         }
+        switch (action){
+            case "logOut":
+                LoginPage(req,resp);
+                break;
+            case "accountManager":
+                showFormAccount(req,resp);
+                break;
+            case "moduleList":
+                showFormModule(req,resp);
+                break;
+            case "showScore":
+                showFormScore(req,resp);
+            case "home":
+                studentHomePage(req,resp);
+                break;
+            default:
+                studentHomePage(req,resp);
+                break;
+        }
+
     }
 
-    private void showAllStataus(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("check.jsp");
-        req.setAttribute("listSTT", classService.findById(1));
-        dispatcher.forward(req,resp);
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getParameter("action");
+        if(action==null){
+            action = "";
+        }
+        switch (action){
+            case "accountManager":
+                accountManager(req,resp);
+                break;
+            default:
+                studentHomePage(req,resp);
+                break;
+        }
 
     }
+
+    private void LoginPage(HttpServletRequest req, HttpServletResponse resp) {
+        try {
+            resp.sendRedirect("/index.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showFormModule(HttpServletRequest req, HttpServletResponse resp) {
+        List<Module> moduleList = moduleService.findByStudentId(studentMain.getId());
+        System.out.println(moduleList);
+        req.setAttribute("moduleList",moduleList);
+        req.setAttribute("student",studentMain);
+        RequestDispatcher rd = req.getRequestDispatcher("/student/moduleList.jsp");
+        try {
+            rd.forward(req,resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void studentHomePage(HttpServletRequest req, HttpServletResponse resp) {
+        req.setAttribute("student",studentMain);
+        RequestDispatcher rd = req.getRequestDispatcher("/student/studentHome.jsp");
+        try {
+            rd.forward(req,resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showFormAccount(HttpServletRequest req, HttpServletResponse resp) {
+        req.setAttribute("student",studentMain);
+        List<Address> addressList = addressService.findAll();
+        List<Status> statusList = statusService.findAll();
+        List<ClassOfAcademy> classList = classService.findAll();
+        req.setAttribute("addressList",addressList);
+        req.setAttribute("statusList",statusList);
+        req.setAttribute("classList",classList);
+        RequestDispatcher rd = req.getRequestDispatcher("/student/accountManager.jsp");
+        try {
+            rd.forward(req,resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void accountManager(HttpServletRequest req, HttpServletResponse resp) {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+        String password = req.getParameter("password");
+        String url = req.getParameter("url");
+        LocalDate dob = LocalDate.parse(req.getParameter("dob"));
+        Address address = addressService.findById(Integer.parseInt(req.getParameter("address_id")));
+        ClassOfAcademy classOfAcademy = classService.findById(Integer.parseInt(req.getParameter("class_id")));
+        Status status = statusService.findById(Integer.parseInt(req.getParameter("status_id")));
+        Student student = new Student(id,name,email,password,url,address,dob,status,classOfAcademy);
+        studentService.edit(student.getId(),student);
+        studentMain = student;
+        studentHomePage(req,resp);
+    }
+    private void showFormScore(HttpServletRequest req, HttpServletResponse resp) {
+        req.setAttribute("student",studentMain);
+        int module_id = Integer.parseInt(req.getParameter("id"));
+        Module module = moduleService.findById(module_id);
+        req.setAttribute("module",module);
+        double score = studentService.findScoreByStudentIModuleId(studentMain.getId(),module_id);
+        req.setAttribute("score",score);
+        RequestDispatcher rd = req.getRequestDispatcher("/student/viewScore.jsp");
+        try {
+            rd.forward(req,resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

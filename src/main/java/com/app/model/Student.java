@@ -21,6 +21,11 @@ public class Student extends User{
         super( name, email, password, url, address, dob, status);
         this.classOfAcademy = classOfAcademy;
     }
+    public Student(int id, String name, String email, String password, String url, Address address, LocalDate dob, Status status) {
+        super(id, name, email, password, url, address, dob, status);
+
+
+    }
 
     public Student(String email, String password, List<Module> moduleList, ClassOfAcademy classOfAcademy) {
         super(email, password);
@@ -34,11 +39,12 @@ public class Student extends User{
         this.classOfAcademy = classOfAcademy;
     }
 
-    public Student(String name, String email, String password, String url, Address address, LocalDate dob, Status status, List<Module> moduleList, ClassOfAcademy classOfAcademy) {
-        super(name, email, password, url, address, dob, status);
+    public Student(int id,String name, String email, String password, String url, Address address, LocalDate dob, Status status, List<Module> moduleList, ClassOfAcademy classOfAcademy) {
+        super(id,name, email, password, url, address, dob, status);
         this.moduleList = moduleList;
         this.classOfAcademy = classOfAcademy;
     }
+
 
     public List<Module> getModuleList() {
         return moduleList;

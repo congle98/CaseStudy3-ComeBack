@@ -6,7 +6,6 @@ import java.util.List;
 public class Module {
     private int id;
     private String name;
-
     private LocalDate dateStart;
     private LocalDate dateEnd;
     List<Student> studentList;
@@ -29,12 +28,12 @@ public class Module {
         this.studentList = studentList;
     }
 
-    public Module(int id, String name, LocalDate dateStart, List<Student> studentList) {
+    public Module(int id, String name, LocalDate dateStart, LocalDate dateEnd) {
         this.id = id;
         this.name = name;
-
+        this.dateEnd = dateEnd;
         this.dateStart = dateStart;
-        this.studentList = studentList;
+
     }
 
     public Module(String name,  LocalDate dateStart, List<Student> studentList) {
@@ -82,5 +81,16 @@ public class Module {
 
     public void setStudentList(List<Student> studentList) {
         this.studentList = studentList;
+    }
+
+    @Override
+    public String toString() {
+        return "Module{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dateStart=" + dateStart +
+                ", dateEnd=" + dateEnd +
+                ", studentList=" + studentList +
+                '}';
     }
 }
