@@ -7,13 +7,30 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <style>
+        .form-product-1{
+            margin: 75px auto;
+        }
+        .form-product{
+            width: 90%;
+            height: 90%;
+            margin: auto;
+
+        }
+        body{
+            background: #e9ecef;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand btn btn-outline-info" href="/Admin?action=createSupervisor">CREATE NEW SUPERVISOR</a>
         <a class="navbar-brand btn btn-outline-info" href="/Admin?action=createTeacher">CREATE NEW TEACHER</a>
+        <a class="navbar-brand btn btn-outline-info" href="/Admin?action=createStudent">CREATE NEW STUDENT</a>
+        <a class="navbar-brand btn btn-outline-info" href="/Admin?action=createCourse">CREATE NEW COURSE</a>
         <h3 style="color: red">Admin : ${admin.id}</h3>
+        <a class="navbar-brand btn btn-outline-info" href="/Admin?action=logOut">LogOut</a>
     </div>
 </nav>
 
