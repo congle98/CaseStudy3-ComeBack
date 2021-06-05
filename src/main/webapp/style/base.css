@@ -7,15 +7,26 @@ html, body{
     width: 100%;
     height: 100%;
     color: var(--while-color);
+    background-image: url("/style/img/backgroudbase.jpg");
+    background-repeat: no-repeat;
 }
 :root{
     --while-color:#ffffff;
 
 }
-a{
-    text-decoration: none;
-    color: var(--while-color);
+/*a{*/
+/*    text-decoration: none;*/
+/*    color: var(--while-color);*/
+/*}*/
+/*a:hover{*/
+/*    color: var(--while-color);*/
+/*}*/
+
+.form-product-1{
+    margin: 75px auto;
 }
-a:hover{
-    color: var(--while-color);
+.form-product{
+    width: 90%;
+    height: 90%;
+    margin: auto;
 }

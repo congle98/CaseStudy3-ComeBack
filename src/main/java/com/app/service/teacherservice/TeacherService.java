@@ -20,6 +20,7 @@ public class TeacherService implements ITeacherService {
     public static final String CREATE_TEACHER = "insert into teacher (name, email, password, url_img, address_id, dob, status_id) VALUES (?,?,?,?,?,?,?);";
     public static final String DETELE_TEACHER_WHERE_ID = "delete from teacher where id = ?;";
     public static final String UPDATE_TEACHER_WHERE_ID = "update teacher set name = ?, email = ?, password = ?, url_img = ?,  address_id = ?, dob = ?, status_id = ? where  id = ?;";
+
     Connection connection = ConnectionJDBC.getConnection();
     IAddressService addressService = new AddressService();
     IStatusService statusService = new StatusService();
@@ -93,8 +94,8 @@ public class TeacherService implements ITeacherService {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
     }
+
 
     @Override
     public void delete(int id) {
@@ -125,4 +126,5 @@ public class TeacherService implements ITeacherService {
             throwables.printStackTrace();
         }
     }
+
 }

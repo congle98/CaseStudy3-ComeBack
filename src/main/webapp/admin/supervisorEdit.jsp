@@ -16,14 +16,16 @@
     <style>
         .form-product-1{
             margin: 75px auto;
-            /*height: 570px;*/
         }
         .form-product{
             width: 90%;
             height: 90%;
             margin: auto;
-        }
 
+        }
+        body{
+            background: #e9ecef;
+        }
     </style>
 </head>
 <body>
@@ -61,7 +63,7 @@
                 <input class="form-control" name="dob" id="dob"  type="date" value="${supervisor.dob}"></br>
             </div>
             <div class="form-group">
-                <label class="form-label" for="status_id"></label>
+                <label class="form-label" for="status_id">Trạng thái</label>
                 <select class="form-select" name="status_id"  id="status_id" >
                     <c:forEach items="${statusList}" var="status" >
                         <option value="${status.id}"
@@ -71,7 +73,7 @@
                 </select></br>
             </div>
             <div class="form-group">
-                <label class="form-label" for="address_id"></label>
+                <label class="form-label" for="address_id">Địa chỉ</label>
                 <select class="form-select" name="address_id"  id="address_id"  >
                     <c:forEach items="${addressList}" var="address" >
                         <option value="${address.id}"

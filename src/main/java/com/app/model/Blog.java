@@ -48,11 +48,11 @@ public class Blog {
         this.date = date;
     }
 
-    public ClassOfAcademy getaClass() {
+    public ClassOfAcademy getClassOfAcademy() {
         return ClassOfAcademy;
     }
 
-    public void setaClass(ClassOfAcademy ClassOfAcademy) {
-        this.ClassOfAcademy = ClassOfAcademy;
+    public void setClassOfAcademy(com.app.model.ClassOfAcademy classOfAcademy) {
+        ClassOfAcademy = classOfAcademy;
     }
 }

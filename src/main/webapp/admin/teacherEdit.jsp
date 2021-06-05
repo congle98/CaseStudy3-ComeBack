@@ -21,8 +21,11 @@
             width: 90%;
             height: 90%;
             margin: auto;
-        }
 
+        }
+        body{
+            background: #e9ecef;
+        }
     </style>
 </head>
 <body>
@@ -36,11 +39,11 @@
     <div class="form-product">
         <form method="post" >
             <div class="form-group">
-                <label class="form-label" for="id">Id giáo vụ</label>
+                <label class="form-label" for="id">Id giáo viên</label>
                 <input class="form-control" name="id" id="id" value="${teacher.id}" disabled>
             </div>
             <div class="form-group">
-                <label class="form-label" for="name">Tên giáo vụ</label>
+                <label class="form-label" for="name">Tên giáo viên</label>
                 <input class="form-control" name="name" id="name" value="${teacher.name}"></br>
             </div>
             <div class="form-group">
@@ -60,7 +63,7 @@
                 <input class="form-control" name="dob" id="dob"  type="date" value="${teacher.dob}"></br>
             </div>
             <div class="form-group">
-                <label class="form-label" for="status_id"></label>
+                <label class="form-label" for="status_id">Trạng thái</label>
                 <select class="form-select" name="status_id"  id="status_id" >
                     <c:forEach items="${statusList}" var="status" >
                         <option value="${status.id}"
@@ -70,7 +73,7 @@
                 </select></br>
             </div>
             <div class="form-group">
-                <label class="form-label" for="address_id"></label>
+                <label class="form-label" for="address_id">Quê quán</label>
                 <select class="form-select" name="address_id"  id="address_id"  >
                     <c:forEach items="${addressList}" var="address" >
                         <option value="${address.id}"

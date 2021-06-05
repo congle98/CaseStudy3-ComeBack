@@ -22,6 +22,7 @@
             private static final String INSERT_CLASS = "INSERT INTO class (name, teacher_id , course_id) VALUE (?,?,?);";
             private static final String DELETE_CLASS_BY_ID = "DELETE FROM class WHERE class.id =?;";
             private static final String UPDATE_CLASS_BY_ID = "UPDATE class SET name =?, teacher_id =?, course_id =? WHERE class.id=?;";
+            private static final String SELECT_ALL_CLASS_BY_TEACHER_ID = "select * from class where teacher_id = ?";
             ICourseService courService = new CourseService();
             ITeacherService teacherService = new TeacherService();
             Connection connection = ConnectionJDBC.getConnection();
@@ -40,10 +41,6 @@
                         Course course = courService.findById(idCourse);
                         ClassOfAcademy classOfAcademy1 = new ClassOfAcademy(id,name,teacher,course); System.out.println("loi cmnr");
                         listClassOfAcademies.add(classOfAcademy1);
-                        for (ClassOfAcademy a: listClassOfAcademies
-                        ) {
-                            System.out.println(a);
-                        }
                     }
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
@@ -108,5 +105,29 @@
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
+            }
+
+            @Override
+            public List<ClassOfAcademy> findClassByTeacherId(int teacher_id) {
+                List<ClassOfAcademy>  listClassOfAcademies = new ArrayList<>();
+                PreparedStatement preparedStatement = null;
+                try {
+                    preparedStatement = connection.prepareStatement(SELECT_ALL_CLASS_BY_TEACHER_ID);
+                    preparedStatement.setInt(1,teacher_id);
+                    ResultSet resultSet = preparedStatement.executeQuery();
+                    while (resultSet.next()){
+                        int id = resultSet.getInt("id");
+                        String name = resultSet.getString("name");
+                        int idTeacher = resultSet.getInt("teacher_id");
+                        int idCourse = resultSet.getInt("course_id");
+                        Teacher teacher = teacherService.findById(idTeacher);
+                        Course course = courService.findById(idCourse);
+                        ClassOfAcademy classOfAcademy1 = new ClassOfAcademy(id,name,teacher,course); System.out.println("loi cmnr");
+                        listClassOfAcademies.add(classOfAcademy1);
+                    }
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                return listClassOfAcademies;
             }
         }
