@@ -2,9 +2,7 @@ package com.app.service.moduleService;
 
 import com.app.config.ConnectionJDBC;
 import com.app.model.Module;
-import com.app.service.IService;
-import com.app.service.classService.ClassService;
-import com.app.service.classService.IClassService;
+import  com.app.service.moduleservice.IModuleService;
 
 import java.sql.*;
 import java.time.LocalDate;
